@@ -1,0 +1,47 @@
+/* Start Elastic carousel */
+.container {
+    margin: 4rem 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    /* width: 80%; */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.container h1 {
+    font-size: 35px;
+    color: rgb(120, 117, 117);
+    text-align: center;
+}
+
+.seperator {
+    width: 100%;
+}
+
+.carousWrapper {
+    width: 50%;
+}
+
+.carousWrapper {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+    margin: 15px;
+}
+
+.title {
+    background-color: rgba(95, 43, 43, 0.228);
+    background-color: rgba(86, 0, 0, 0.6);
+    border-radius: 15px;
+}
+
+.title h3 {
+    padding: 2rem;
+    color: #fff;
+}
