@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Input } from "./Input";
+import NavLink from "./NavLink";
 
 
 export function NavBar() {
@@ -14,10 +15,24 @@ export function NavBar() {
 
             <div className="w-full flex flex-col justify-center">
                 <div className=" flex space-x-4 pb-8">
-                    <div className="flex space-x-4">
-                        <a href="" className="bg-brown-secundary text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+                    <div className="flex space-x-4 ">
+                        <ul className="flex space-x-4 ">
+                            <NavLink
+                                title="Dashbord"
+                                path="/"
+                            />
+                            <NavLink
+                                title="Receitas"
+                                path="/recipes"
+                            />
+                            <NavLink
+                                title="Artigos"
+                                path="/articles"
+                            />
+                        </ul>
+                        {/* <a href="" className="bg-brown-secundary text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
                         <a href="" className="text-gray-300 hover:bg-brown-hover hover:text-white block rounded-md px-3 py-2 text-base font-medium">Receitas</a>
-                        <a href="" className="text-gray-300 hover:bg-brown-hover hover:text-white block rounded-md px-3 py-2 text-base font-medium">Artigos</a>
+                        <a href="" className="text-gray-300 hover:bg-brown-hover hover:text-white block rounded-md px-3 py-2 text-base font-medium">Artigos</a> */}
                     </div>
                 </div>
                 <Input
