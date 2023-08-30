@@ -21,7 +21,7 @@ export default function RootLayout({
 
       <body className={`inter.className bg-backgound-body `}>
         <NavBar />
-        <div className=" mb-8 mt-16 mr-14">{children}</div>
+        <div className=" mb-8 mt-16 ">{children}</div>
         <Footer />
       </body>
 
