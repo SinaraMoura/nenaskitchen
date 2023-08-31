@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { Input } from "./Input";
 import NavLink from "./NavLink";
-
 
 export function NavBar() {
     return (
@@ -33,12 +31,6 @@ export function NavBar() {
 
                     </div>
                 </div>
-                {/* <Input
-                    placeholder="O que vamos comer hoje ?"
-                    type="text"
-                /> */}
-
-
             </div>
         </div >
     )

@@ -21,7 +21,7 @@ export default async function RecipesDetailsPage({ params }: { params: { id: str
                     <div className="flex items-center justify-center gap-28">
                         <div className="flex flex-col items-center justify-center">
                             <AiOutlineUser />
-                            <p>20 pessoas</p>
+                            <p>{response.proceeds}</p>
                         </div>
                         <div className="flex flex-col items-center justify-center">
                             <PiTimer />
@@ -47,7 +47,7 @@ export default async function RecipesDetailsPage({ params }: { params: { id: str
                     <h3 className="text-2xl font-bold mb-4">Modo de Preparo</h3>
                     {response.preparation.map((prep: string[], index: number) => {
                         return (
-                            <div className="rounded flex items-center text-xl gap-4 px-5 py-5 hover:bg-slate-200">
+                            <div className="rounded cursor-pointer flex items-center text-xl gap-4 px-5 py-5 hover:bg-slate-200">
                                 <p className="font-bold text-5xl text-slate-500">{index + 1}</p>
                                 <p className="mb-2">{prep}</p>
                             </div>
