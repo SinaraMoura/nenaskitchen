@@ -14,7 +14,7 @@ export const InputBase: ForwardRefRenderFunction<
     return (
         <div className={`w-full flex mb-4 text-blue font-medium ${className}`}>
             <input
-                className={`w-3/4 px-6 py-[5px] bg-white rounded-lg border border-brown-secundary  `}
+                className={`w-3/4 px-6 py-[5px] bg-white rounded-lg border border-brown-secundary m-auto mb-8 `}
                 type={type}
                 placeholder={placeholder}
                 ref={ref}

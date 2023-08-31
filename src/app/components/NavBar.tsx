@@ -30,15 +30,13 @@ export function NavBar() {
                                 path="/articles"
                             />
                         </ul>
-                        {/* <a href="" className="bg-brown-secundary text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-                        <a href="" className="text-gray-300 hover:bg-brown-hover hover:text-white block rounded-md px-3 py-2 text-base font-medium">Receitas</a>
-                        <a href="" className="text-gray-300 hover:bg-brown-hover hover:text-white block rounded-md px-3 py-2 text-base font-medium">Artigos</a> */}
+
                     </div>
                 </div>
-                <Input
+                {/* <Input
                     placeholder="O que vamos comer hoje ?"
                     type="text"
-                />
+                /> */}
 
 
             </div>

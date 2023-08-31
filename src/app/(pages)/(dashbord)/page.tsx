@@ -1,5 +1,6 @@
 'use client';
 import ElasticCarousel from "@/app/components/Carousel";
+import { Input } from "@/app/components/Input";
 import RecipesContainer from "@/app/components/RecipesContainer";
 import { fetchWrapper } from "@/utils/fetchWrapper";
 import Link from "next/link";
@@ -11,7 +12,11 @@ export default async function Dashboard() {
 
     return (
         <div className="flex flex-col  justify-center w-full container px-5  bg-backgound-body m-auto">
-            <h3 className="text-5xl text-yellow-950 pb-4 font-bold">Bem vindo(a) a Nena's Food e Drinks</h3>
+            <Input
+                placeholder="O que vamos comer hoje ?"
+                type="text"
+                className="m-auto"
+            />
             <h4 className="text-3xl">Faça sua escolha de hoje !</h4>
             <ElasticCarousel />
             <h4 className="text-3xl mb-[2rem]" >Receitas</h4>
