@@ -20,7 +20,6 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
             });
             setRecipeId(response)
         }
-
         detailRecipe()
     }, [])
     const image = `http://localhost:3333/uploads/${recipeId.image}`
@@ -46,8 +45,6 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div className="w-full flex gap-10">
                 <div className="w-2/4 ">
