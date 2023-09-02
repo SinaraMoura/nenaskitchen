@@ -1,5 +1,5 @@
 'use client';
-import { fetchWrapper } from "@/utils/fetchWrapper";
+import { fetchWrapper } from "@/app/utils/fetchWrapper";
 import RecipesSearch from '@/app/components/RecipesSearch';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';

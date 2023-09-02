@@ -1,6 +1,6 @@
 
 import RecipesContainer from "@/app/components/RecipesContainer"
-import { fetchWrapper } from "@/utils/fetchWrapper";
+import { fetchWrapper } from "@/app/utils/fetchWrapper";
 
 export default async function Recipes() {
     const response = await fetchWrapper('/recipes/list', {

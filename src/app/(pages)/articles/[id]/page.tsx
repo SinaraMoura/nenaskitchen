@@ -1,5 +1,5 @@
 'use client';
-import { fetchWrapper } from "@/utils/fetchWrapper";
+import { fetchWrapper } from "@/app/utils/fetchWrapper";
 import { useEffect, useState } from "react";
 
 export default function ArticleDetailsPage({ params }: { params: { id: string } }) {

@@ -1,5 +1,5 @@
 'use client';
-import { fetchWrapper } from "@/utils/fetchWrapper";
+import { fetchWrapper } from "@/app/utils/fetchWrapper";
 import { PiTimer } from 'react-icons/pi'
 import { AiOutlineUser } from 'react-icons/ai';
 import { useEffect, useState } from 'react'

@@ -1,7 +1,7 @@
 'use client';
 import ElasticCarousel from "@/app/components/Carousel";
 import RecipesContainer from "@/app/components/RecipesContainer";
-import { fetchWrapper } from "@/utils/fetchWrapper";
+import { fetchWrapper } from "@/app/utils/fetchWrapper";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { FormEvent, useEffect, useState } from 'react';

@@ -1,6 +1,6 @@
 
 import ArticlesContainer from "@/app/components/ArticlesContainer"
-import { fetchWrapper } from "@/utils/fetchWrapper";
+import { fetchWrapper } from "@/app/utils/fetchWrapper";
 
 export default async function Articles() {
     const response = await fetchWrapper('/articles/list', {
