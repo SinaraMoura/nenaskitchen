@@ -89,9 +89,9 @@ export default function CreateArticles() {
 
                     </div>
                     <div className=" mb-4 ml-4">
-                        <p className="text-blue text-2xl font-medium">Adicionar Receita</p>
+                        <p className="text-blue text-2xl font-medium">Adicionar Artigo</p>
                         <p className=" text-blue text-base font-light">
-                            Deixe aqui registrada a sua felicidade! :)
+                            Cozinhar é fazer poesia para ser degustada ! :)
                         </p>
                         <div className="h-[90%] flex flex-col place-content-between">
                             <div className="my-4">
