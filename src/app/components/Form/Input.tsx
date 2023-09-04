@@ -11,20 +11,7 @@ export const InputBase: ForwardRefRenderFunction<
     HTMLInputElement & HTMLTextAreaElement,
     IInput
 > = ({ placeholder, type, title, className, ...rest }, ref) => {
-    if (type === 'textarea') {
-        return (
-            <div className={`mb-4 text-blue font-medium ${className}`}>
-                <label>{title}</label>
-                <textarea
-                    className={`w-full px-6 py-[5px] bg-white rounded-lg border border-teal-400  `}
-                    placeholder={placeholder}
-                    ref={ref}
-                    rows={5}
 
-                />
-            </div>
-        );
-    }
     return (
         <div className={`mb-4 text-blue font-medium ${className}`}>
             <label>{title}</label>

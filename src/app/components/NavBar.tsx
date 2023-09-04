@@ -34,7 +34,12 @@ export function NavBar() {
                                 path="/create-recipe"
                             />
                         </ul>
-
+                        <ul>
+                            <NavLink
+                                title="Adicionar artigo"
+                                path="/create-article"
+                            />
+                        </ul>
                     </div>
                 </div>
             </div>
