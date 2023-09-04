@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { Input } from "@/app/components/Form/Input";
 import { InputFile } from "@/app/components/Form/InputFile";
 import { useForm } from 'react-hook-form';
@@ -24,8 +24,7 @@ export default function CreateRecipes() {
     const {
         register,
         handleSubmit,
-        setValue,
-        formState: { errors },
+        setValue
     } = useForm<IFormProps>();
 
     const onSubmit = async (data: IFormProps) => {
@@ -44,9 +43,7 @@ export default function CreateRecipes() {
             formData.append('category', data.category);
             formData.append('image', data.image);
             formData.append('proceeds', data.proceeds);
-            // formData.append('ingredients', String(formattedIngredients));
-            // formData.append('preparation', String(formattedPreparation));
-            console.log(formData);
+
             formattedIngredients.forEach((ing, index) => {
                 formData.append(`ingredients[${index}]`, ing);
             })
@@ -57,10 +54,8 @@ export default function CreateRecipes() {
             const response = await api.post(`/recipes`, formData);
 
             toast.success('Receita adicionada com sucesso!');
-            console.log('🚀 ~ file: page.tsx:49 ~ onSubmit ~ response:', response);
-        } catch (error) {
-            toast.error('Erro ao adicionar receita ');
-            console.log('🚀 ~ file: page.tsx:48 ~ onSubmit ~ error:', error);
+        } catch (error: any) {
+            toast.error(error?.response?.data?.message);
         }
 
     }
@@ -89,9 +84,7 @@ export default function CreateRecipes() {
                             type="text"
                             {...register('title')}
                         />
-                        {errors.title && (
-                            <span className="text-red-500">Campo obrigatório</span>
-                        )}
+
                         <Input
                             title="Duração"
                             placeholder="Tempo de duração"
@@ -100,7 +93,7 @@ export default function CreateRecipes() {
                         />
                         <Input
                             title="Rendimento"
-                            placeholder="rende para ..."
+                            placeholder="Rende para ..."
                             type="text"
                             {...register('proceeds')}
                         />
@@ -111,14 +104,19 @@ export default function CreateRecipes() {
                             {...register('difficulty')}
                         />
 
+                        <label className="mb-4 text-blue font-medium">Ingredientes</label>
                         <textarea
+                            className="w-full px-6 py-[5px] bg-white rounded-lg border border-teal-400"
                             title="Ingredientes"
-                            placeholder="Ingredients"
+                            placeholder="Obs.: Separar os ingredientes com vírgula e quebrar a linha"
                             {...register('ingredients')}
                         />
+
+                        <label className="mb-4 text-blue font-medium">Modo de Preparo</label>
                         <textarea
+                            className="w-full px-6 py-[5px] bg-white rounded-lg border border-teal-400"
                             title="Mode de Preparo"
-                            placeholder="Ingredients"
+                            placeholder="Obs.: Separar as etapas com vírgula e quebrar a linha"
                             {...register('preparation')}
                         />
 
@@ -139,22 +137,24 @@ export default function CreateRecipes() {
                             ))}
                         </div>
                     </div>
-                    <div className="mb-4 ml-4">
-                        <p className="text-blue text-2xl font-medium">Adicionar Recieta</p>
+                    <div className=" mb-4 ml-4">
+                        <p className="text-blue text-2xl font-medium">Adicionar Receita</p>
                         <p className=" text-blue text-base font-light">
                             Deixe aqui registrada a sua felicidade! :)
                         </p>
-                        <div className="my-4">
-                            <p className="text-blue  text-base font-medium">Imagem</p>
+                        <div className="h-[90%] flex flex-col place-content-between">
+                            <div className="my-4">
+                                <p className="text-blue  text-base font-medium mb-4">Imagem</p>
 
-                            <div className="w-full  h-80 bg-zinc-300 rounded-3xl shadow">
-                                <InputFile
-                                    {...register('image')}
-                                    onChange={(e) => handleFileChange('image', e)}
-                                />
+                                <div className="w-full  h-80 bg-zinc-300 rounded-3xl shadow mb-11">
+                                    <InputFile
+                                        {...register('image')}
+                                        onChange={(e) => handleFileChange('image', e)}
+                                    />
+                                </div>
                             </div>
+                            <Button title="Cadastrar receita" />
                         </div>
-                        <Button title="Cadastrar receita" />
                     </div>
                 </div>
             </form>
