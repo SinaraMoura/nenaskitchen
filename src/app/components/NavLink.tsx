@@ -8,8 +8,8 @@ interface Props {
 
 export default function NavLink({ title, path }: Props) {
     return (
-        <div className='text-white bg-brown-secundary rounded px-1.5 py-1.5' >
-            <Link href={path} >
+        <div >
+            <Link href={path} className='text-color-primary uppercase font-medium'>
                 {title}
             </Link>
         </div>

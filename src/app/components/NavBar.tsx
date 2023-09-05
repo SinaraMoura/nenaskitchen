@@ -13,18 +13,31 @@ export function NavBar() {
         router.push(`/search?title=${search}`);
     };
     return (
-        <div className=" bg-brown-primary px-5 flex  items-center justify-center sm:items-stretch sm:justify-start">
-            <Image
-                src="/logo.png"
-                alt="Logo"
-                width={200}
-                height={200}
-            />
+        <div className=" bg-scale-gray-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="ml-16">
+                <Image
 
-            <div className="w-full flex flex-col justify-center">
-                <div className=" flex space-x-4 pb-8">
-                    <div className="flex space-x-4 ">
-                        <ul className="flex space-x-4 ">
+                    src="/logo.png"
+                    alt="Logo"
+                    width={200}
+                    height={200}
+                />
+            </div>
+
+            <div className="w-1/2 ml-24 mr-auto  flex flex-col  justify-center item-center">
+                <form action="" onSubmit={handleSubmit}>
+                    <input
+                        placeholder="O que vamos comer hoje ?"
+                        type="text"
+                        value={search}
+                        className="w-full px-6 py-[5px] bg-white rounded-lg border border-brown-secundary m-auto mb-8"
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </form>
+
+                <div className="w-full flex space-x-4">
+                    <div className="w-full flex space-x-4 ">
+                        <ul className="flex gap-7 ">
                             <NavLink
                                 title="Dashbord"
                                 path="/"
@@ -37,30 +50,19 @@ export function NavBar() {
                                 title="Artigos"
                                 path="/articles"
                             />
-                        </ul>
-                        <ul>
                             <NavLink
                                 title="Adicionar receita"
                                 path="/create-recipe"
                             />
-                        </ul>
-                        <ul>
                             <NavLink
                                 title="Adicionar artigo"
                                 path="/create-article"
                             />
+
+
                         </ul>
                     </div>
                 </div>
-                <form action="" onSubmit={handleSubmit}>
-                    <input
-                        placeholder="O que vamos comer hoje ?"
-                        type="text"
-                        value={search}
-                        className="w-3/4 px-6 py-[5px] bg-white rounded-lg border border-brown-secundary m-auto mb-8"
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                </form>
             </div>
 
         </div >
