@@ -1,6 +1,7 @@
 import { categories } from "../../../public/items.json";
 import Carousel from "react-elastic-carousel";
 import styles from "../../styles/Elastic.module.css";
+import { useRouter } from "next/navigation";
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -11,12 +12,18 @@ const breakPoints = [
 
 export default function ElasticCarousel() {
   const { elastic } = categories;
+  const router = useRouter();
+
+  const filterCategory = (category) => {
+    router.push(`/filter?category=${category}`);
+  }
   return (
     <div className={styles.container}>
       <div className={styles.contWrapper}>
         <Carousel breakPoints={breakPoints}>
           {elastic.map((item) => (
             <div
+              onClick={() => filterCategory(item.name)}
               key={item.id}
               className={styles.card}
               style={{ backgroundImage: `url(${item.icon})` }}
