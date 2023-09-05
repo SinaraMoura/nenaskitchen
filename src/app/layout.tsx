@@ -5,6 +5,7 @@ import { NavBar } from './components/NavBar';
 import Footer from './components/Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-
       <body className={`inter.className bg-backgound-body h-full `}>
         <ToastContainer />
         <NavBar />

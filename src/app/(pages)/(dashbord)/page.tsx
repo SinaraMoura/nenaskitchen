@@ -18,7 +18,7 @@ export default function Dashboard() {
         listRecipes()
     }, [])
     return (
-        <div className="flex flex-col  justify-center w-full container px-5  bg-backgound-body m-auto">
+        <div className="flex flex-col  justify-center w-full container px-5  bg-backgound-body m-auto ">
 
             <h4 className="text-3xl">Faça sua escolha de hoje !</h4>
             <ElasticCarousel />
