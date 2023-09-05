@@ -14,9 +14,8 @@ export function NavBar() {
     };
     return (
         <div className=" bg-scale-gray-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="ml-16">
+            <div className="">
                 <Image
-
                     src="/logo.png"
                     alt="Logo"
                     width={200}
@@ -24,19 +23,19 @@ export function NavBar() {
                 />
             </div>
 
-            <div className="w-1/2 ml-24 mr-auto  flex flex-col  justify-center item-center">
+            <div className="  m-auto flex flex-col  justify-center item-center">
                 <form action="" onSubmit={handleSubmit}>
                     <input
                         placeholder="O que vamos comer hoje ?"
                         type="text"
                         value={search}
-                        className="w-full px-6 py-[5px] bg-white rounded-lg border border-brown-secundary m-auto mb-8"
+                        className="w-full px-6 py-[5px] bg-white rounded-full border border-color-secundary-1 m-auto mb-8"
                         onChange={(e) => setSearch(e.target.value)}
                     />
                 </form>
 
                 <div className="w-full flex space-x-4">
-                    <div className="w-full flex space-x-4 ">
+                    <div className="w-full flex space-x-4 justify-center items-center ">
                         <ul className="flex gap-7 ">
                             <NavLink
                                 title="Dashbord"

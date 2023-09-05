@@ -1,17 +1,15 @@
 /* Start Elastic carousel */
 .container {
-    margin: 4rem 0;
+    /* margin: 4rem 0; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     /* width: 80%; */
     padding: 20px;
-    border-radius: 15px;
+    /* border-radius: 15px; */
+    /* width: 100vw; */
+    background-color: #fae4a2;
 }
 
-.carousWrapper {
-    width: 50%;
-}
-
-.carousWrapper {
+.contWrapper {
     width: 100%;
 }
 
@@ -22,7 +20,7 @@
     align-items: center;
     height: 200px;
     width: 100%;
-    margin: 15px;
+    /* margin: 15px; */
     border-radius: 0.25rem;
     cursor: pointer;
 }

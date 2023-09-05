@@ -21,10 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={`inter.className bg-backgound-body h-full `}>
+      <body className={`inter.className bg-scale-gray-1 h-full `}>
         <ToastContainer />
         <NavBar />
-        <div className=" mb-8 mt-16 h-full">{children}</div>
+        <div className=" mb-8 h-full w-full">{children}</div>
         <Footer />
       </body>
 
