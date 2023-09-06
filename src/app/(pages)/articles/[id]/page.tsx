@@ -23,8 +23,8 @@ export default function ArticleDetailsPage({ params }: { params: { id: string } 
     const image = `http://localhost:3333/uploads/${article.image}`
     return (
         <div className="m-auto w-full h-full px-8 pb-8 ">
-            <p className="text-base font-bold">{`Nena's Kitchen > Artigos > ${article.title}`}</p>
-            <h1 className="text-4xl font-bold mb-12 mt-12">{article.title}</h1>
+            <p className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Kitchen > Artigos > ${article.title}`}</p>
+            <h1 className="text-4xl font-bold text-scale-gray-7 mb-12 mt-12">{article.title}</h1>
             <div
                 className="rounded w-full h-96 relative bg-black shadow bg-cover bg-no-repeat bg-center mb-12"
                 style={{ backgroundImage: `url(${image})` }}
@@ -33,7 +33,7 @@ export default function ArticleDetailsPage({ params }: { params: { id: string } 
             {article.text.map((text: string[], index: number) => {
                 return (
                     <div className=" flex items-center text-xl gap-4">
-                        <p className="font-bold text-5xl text-slate-500">{index + 1}</p>
+                        <p className="font-bold text-5xl text-backing-color-3">{index + 1}</p>
                         <p className="mb-2">{text}</p>
                     </div>
 
