@@ -38,7 +38,7 @@ export function NavBar() {
                     <div className="w-full flex space-x-4 justify-center items-center ">
                         <ul className="flex gap-7 ">
                             <NavLink
-                                title="Dashbord"
+                                title="Home"
                                 path="/"
                             />
                             <NavLink
