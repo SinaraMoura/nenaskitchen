@@ -68,12 +68,12 @@ export default function CreateRecipes() {
         <div className="container m-auto">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-1 grid-cols-1 p-8">
-                    <div className="mb-4 pr-6 border-r-2 border-[#61D9DE] ">
+                    <div className="mb-4 pr-6 border-r-2 border-color-secundary-1 ">
                         <div className="mb-4">
                             <p className="text-blue text-2xl font-medium">
                                 Adicionar Receita
                             </p>
-                            <p className=" text-blue text-base font-light">
+                            <p className=" text-backing-color-3 text-base font-semibold">
                                 "Gastronomia é a arte de usar comida para criar felicidade." - Theodore Zeldin.
                             </p>
 
@@ -104,28 +104,28 @@ export default function CreateRecipes() {
                             {...register('difficulty')}
                         />
 
-                        <label className="mb-4 text-blue font-medium">Ingredientes</label>
+                        <label className="mb-4 text-blue text-scale-gray-6 font-medium">Ingredientes</label>
                         <textarea
-                            className="w-full px-6 py-[5px] bg-white rounded-lg border border-teal-400"
+                            className="w-full font-medium text-scale-gray-6 px-6 py-[5px] bg-white rounded-lg border border-color-secundary-1"
                             title="Ingredientes"
                             placeholder="Obs.: Separar os ingredientes com vírgula e quebrar a linha"
                             {...register('ingredients')}
                         />
 
-                        <label className="mb-4 text-blue font-medium">Modo de Preparo</label>
+                        <label className="mb-4 text-scale-gray-6 font-medium">Modo de Preparo</label>
                         <textarea
-                            className="w-full px-6 py-[5px] bg-white rounded-lg border border-teal-400"
+                            className="w-full px-6 py-[5px] text-scale-gray-6 font-medium bg-white rounded-lg border border-color-secundary-1"
                             title="Mode de Preparo"
                             placeholder="Obs.: Separar as etapas com vírgula e quebrar a linha"
                             {...register('preparation')}
                         />
 
-                        <p className=" text-blue text-base font-medium mb-4">
+                        <p className=" text-scale-gray-6 text-base font-medium mb-4">
                             Selecione a categoria
                         </p>
                         <div className="grid grid-cols-5 gap-2">
                             {categories.elastic.map((categories) => (
-                                <div className="text-blue" key={categories.id}>
+                                <div className="text-scale-gray-6" key={categories.id}>
                                     <input
                                         type="checkbox"
                                         className="mr-2 "
@@ -139,7 +139,7 @@ export default function CreateRecipes() {
                     </div>
                     <div className=" mb-4 ml-4">
                         <p className="text-blue text-2xl font-medium">Adicionar Receita</p>
-                        <p className=" text-blue text-base font-light">
+                        <p className="text-backing-color-3 text-base font-semibold">
                             Deixe aqui registrada a sua felicidade! :)
                         </p>
                         <div className="h-[90%] flex flex-col place-content-between">

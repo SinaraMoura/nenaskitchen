@@ -5,8 +5,8 @@ interface IButtonProps {
 
 export const Button = ({ title, className }: IButtonProps) => {
     return (
-        <div className={`flex items-center justify-center w-full text-white`}>
-            <button className={`bg-brown-primary rounded-2xl px-4 py-2  w-full ${className}`}>
+        <div className={`flex items-center justify-center w-full text-scale-gray-7`}>
+            <button className={`bg-backing-color-3 rounded-2xl px-4 font-bold py-4 uppercase ${className}`}>
                 {title}
             </button>
         </div>
