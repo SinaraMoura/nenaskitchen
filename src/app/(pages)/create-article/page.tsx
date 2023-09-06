@@ -55,12 +55,12 @@ export default function CreateArticles() {
         <div className="container m-auto">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-1 grid-cols-1 p-8">
-                    <div className="mb-4 pr-6 border-r-2 border-[#61D9DE] ">
+                    <div className="mb-4 pr-6 border-r-2 border-color-secundary-1 ">
                         <div className="mb-4">
-                            <p className="text-blue text-2xl font-medium">
+                            <p className="text-scale-gray-7 text-2xl font-medium">
                                 Adicionar Artigo
                             </p>
-                            <p className=" text-blue text-base font-light">
+                            <p className=" text-backing-color-3 text-base font-semibold">
                                 "Aprendemos a cozinhar com a memória dos outros." - Jean-François Piège.
                             </p>
 
@@ -79,9 +79,9 @@ export default function CreateArticles() {
                             {...register('description')}
                         />
 
-                        <label className="mb-4 text-blue font-medium">Conteúdo</label>
+                        <label className="mb-4 text-scale-gray-6 font-medium">Conteúdo</label>
                         <textarea
-                            className="w-full px-6 py-[5px] bg-white rounded-lg border border-teal-400"
+                            className="w-full text-scale-gray-6 px-6 py-[5px] font-medium bg-white rounded-lg border border-color-secundary-1"
                             title="Text"
                             placeholder="Obs.: Separar os items com vírgula e quebrar a linha"
                             {...register('text')}
@@ -89,13 +89,13 @@ export default function CreateArticles() {
 
                     </div>
                     <div className=" mb-4 ml-4">
-                        <p className="text-blue text-2xl font-medium">Adicionar Artigo</p>
-                        <p className=" text-blue text-base font-light">
+                        <p className="text-scale-gray-7 text-2xl font-medium">Adicionar Artigo</p>
+                        <p className="text-backing-color-3 text-base font-semibold">
                             Cozinhar é fazer poesia para ser degustada ! :)
                         </p>
                         <div className="h-[90%] flex flex-col place-content-between">
                             <div className="my-4">
-                                <p className="text-blue  text-base font-medium mb-4">Imagem</p>
+                                <p className="text-scale-gray-7 text-base font-medium mb-4">Imagem</p>
 
                                 <div className="w-full  h-80 bg-zinc-300 rounded-3xl shadow mb-11">
                                     <InputFile
