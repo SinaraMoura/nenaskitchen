@@ -25,7 +25,7 @@ export default function Dashboard() {
             <h1 className="mx-20 mb-8 text-2xl text-scale-gray-7 font-medium">Confira as últimas receitas !</h1>
             <div className="flex flex-col justify-center w-full mb-8">
 
-                <div className="grid grid-cols-4 gap-4 mx-20 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 ">
+                <div className="grid grid-cols-1 gap-4 mx-20 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 ">
                     {recipes.slice(0, 8).map((recipe: any) => {
                         return (
                             <RecipesContainer recipes={recipe} key={recipe._id} />

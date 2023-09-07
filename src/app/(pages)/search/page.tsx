@@ -20,10 +20,9 @@ export default function Search({ params }: { params: { title: string } }) {
                 return setSearchRecipeNull(`Nenhuma receita relacionada a '${title}'`);
             }
             setSearchRecipe(response)
-            console.log("🚀 ~ file: page.tsx:19 ~ searchRecipe ~ response:", response)
         }
         searchRecipe()
-    }, [])
+    }, [title])
 
     return (
         <div className="w-full m-auto container px-5">

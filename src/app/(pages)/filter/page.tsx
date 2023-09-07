@@ -24,7 +24,7 @@ export default function FilterPage({ params }: { params: { category: string } })
             setRecipes(response);
         }
         filterRecipe()
-    }, [])
+    }, [category])
 
     const optionSelect = (option: any) => {
         router.push(`/filter?category=${option.target.value}`)
@@ -33,10 +33,12 @@ export default function FilterPage({ params }: { params: { category: string } })
                 method: 'GET',
             });
             if (response.length === 0) {
+                setRecipes([]);
                 return setFilterNull(`Nenhuma receita encontrada com a categoria '${option.target.value}'`);
             } else {
                 setFilterNull('')
             }
+            setRecipes(response)
         }
         filterRecipe()
     }
