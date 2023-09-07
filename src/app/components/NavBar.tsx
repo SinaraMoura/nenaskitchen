@@ -11,9 +11,10 @@ export function NavBar() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         router.push(`/search?title=${search}`);
+        setSearch('')
     };
     return (
-        <div className=" bg-scale-gray-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div className="border-b shadow-md  bg-scale-gray-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="">
                 <Image
                     src="/logo.png"

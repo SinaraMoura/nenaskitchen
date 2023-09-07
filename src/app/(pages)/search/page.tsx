@@ -1,8 +1,8 @@
 'use client';
 import { fetchWrapper } from "@/app/utils/fetchWrapper";
-import RecipesSearch from '@/app/components/RecipesSearch';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import RecipesContainer from "@/app/components/RecipesContainer";
 
 export default function Search({ params }: { params: { title: string } }) {
     const [searchRecipe, setSearchRecipe] = useState([]);
@@ -27,12 +27,11 @@ export default function Search({ params }: { params: { title: string } }) {
 
     return (
         <div className="w-full m-auto container px-5">
-            <h1 className="text-base font-bold mb-4">{`Nena's Ticken > Pesquise em Nena's Ticken`}</h1>
-            <h1 className="text-2xl font-medium mb-4">Receitas relacionadas a '{searchParams.get('title')}'</h1>
+            <h1 className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Receitas relacionadas a '${title}'`}</h1>
 
-            <div className="w-full grid grid-cols-3 gap-4 items-center justifiy-center">
+            <div className="w-full container grid grid-cols-4 gap-4 items-center justifiy-center pb-8">
                 {searchRecipe.map((recipe: any, index: number) => {
-                    return <RecipesSearch recipes={recipe} key={index} />
+                    return <RecipesContainer recipes={recipe} key={index} />
                 })}
             </div>
 

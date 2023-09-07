@@ -5,13 +5,11 @@ import { NavBar } from './components/NavBar';
 import Footer from './components/Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Nenas Kitchen',
-  description: 'O seu aliado na cozinha',
+  title: `Nenas Kitchen | O seu aliado na cozinha`
 }
 
 export default function RootLayout({
