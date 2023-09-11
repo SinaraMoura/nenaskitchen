@@ -20,7 +20,7 @@ export default function ArticleDetailsPage({ params }: { params: { id: string } 
         detailArticle()
     }, [])
 
-    const image = `http://localhost:3333/uploads/${article.image}`
+    const image = `https://nenas-kitchen-api.onrender.com/uploads/${article.image}`
     return (
         <div className="m-auto w-full h-full px-8 pb-8 ">
             <p className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Kitchen > Artigos > ${article.title}`}</p>

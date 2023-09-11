@@ -52,7 +52,7 @@ export default function CreateArticles() {
         setValue(name, file);
     };
     return (
-        <div className="container m-auto">
+        <div className="container m-auto sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-1 grid-cols-1 p-8">
                     <div className="mb-4 pr-6 border-r-2 border-color-secundary-1 ">
@@ -88,7 +88,7 @@ export default function CreateArticles() {
                         />
 
                     </div>
-                    <div className=" mb-4 ml-4">
+                    <div className=" mb-4 ml-0 sm:ml-4 md:ml-4">
                         <p className="text-scale-gray-7 text-2xl font-medium">Adicionar Artigo</p>
                         <p className="text-backing-color-3 text-base font-semibold">
                             Cozinhar é fazer poesia para ser degustada ! :)

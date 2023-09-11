@@ -2,7 +2,7 @@
 import Link from "next/link";
 
 export default function ArticlesContainer({ articles }: any) {
-    const image = `http://localhost:3333/uploads/${articles.image}`;
+    const image = `https://nenas-kitchen-api.onrender.com/uploads/${articles.image}`;
     return (
         <Link href={`/articles/${articles._id}`}>
             <div className="w-full flex  items-center justify-center flex-col mb-4 cursor-pointer sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">

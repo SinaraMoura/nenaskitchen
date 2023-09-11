@@ -18,8 +18,8 @@ export default function Dashboard() {
         listRecipes()
     }, [])
     return (
-        <div className="container flex flex-col justify-center w-full  bg-scale-gray-1 ">
-            <div className="mb-8">
+        <div className=" flex flex-col justify-center w-full  bg-scale-gray-1 ">
+            <div className="mb-8 ">
                 <ElasticCarousel />
             </div>
             <h1 className="mx-20 mb-8 text-2xl text-scale-gray-7 font-medium">Confira as últimas receitas !</h1>

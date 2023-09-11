@@ -65,10 +65,10 @@ export default function CreateRecipes() {
     };
 
     return (
-        <div className="container m-auto">
+        <div className="container m-auto sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-1 grid-cols-1 p-8">
-                    <div className="mb-4 pr-6 border-r-2 border-color-secundary-1 ">
+                    <div className="mb-4 pr-6 border-r-2 border-color-secundary-1 sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
                         <div className="mb-4">
                             <p className="text-scale-gray-7 text-2xl font-medium">
                                 Adicionar Receita
@@ -123,7 +123,7 @@ export default function CreateRecipes() {
                         <p className=" text-scale-gray-6 text-base font-medium mb-4">
                             Selecione a categoria
                         </p>
-                        <div className="grid grid-cols-5 gap-2">
+                        <div className="grid grid-cols-2 gap-2s sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
                             {categories.elastic.map((categories) => (
                                 <div className="text-scale-gray-6" key={categories.id}>
                                     <input
@@ -137,7 +137,7 @@ export default function CreateRecipes() {
                             ))}
                         </div>
                     </div>
-                    <div className=" mb-4 ml-4">
+                    <div className=" mb-4 ml-0 sm:ml-4 md:ml-4">
                         <p className="text-scale-gray-7 text-2xl font-medium">Adicionar Receita</p>
                         <p className="text-backing-color-3 text-base font-semibold">
                             Deixe aqui registrada a sua felicidade! :)
