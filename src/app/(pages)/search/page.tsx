@@ -28,7 +28,7 @@ export default function Search({ params }: { params: { title: string } }) {
         <div className="w-full m-auto container px-5">
             <h1 className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Receitas relacionadas a '${title}'`}</h1>
 
-            <div className="w-full container grid grid-cols-4 gap-4 items-center justifiy-center pb-8">
+            <div className="w-full container grid grid-cols-1 gap-4 items-center justifiy-center pb-8 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
                 {searchRecipe.map((recipe: any, index: number) => {
                     return <RecipesContainer recipes={recipe} key={index} />
                 })}
