@@ -1,8 +1,8 @@
 'use client';
-import { fetchWrapper } from "@/app/utils/fetchWrapper";
+import { fetchWrapper } from "../../utils/fetchWrapper";
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import RecipesContainer from "@/app/components/RecipesContainer";
+import RecipesContainer from "../../components/RecipesContainer";
 
 export default function Search({ params }: { params: { title: string } }) {
     const [searchRecipe, setSearchRecipe] = useState([]);

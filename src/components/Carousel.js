@@ -1,6 +1,6 @@
-import { categories } from "../../../public/items.json";
+import { categories } from "../../public/items.json";
 import Carousel from "react-elastic-carousel";
-import styles from "../../styles/Elastic.module.css";
+import styles from "../styles/Elastic.module.css";
 import { useRouter } from "next/navigation";
 
 const breakPoints = [

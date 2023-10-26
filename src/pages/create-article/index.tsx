@@ -1,12 +1,12 @@
 'use client';
-import { Input } from "@/app/components/Form/Input";
-import { InputFile } from "@/app/components/Form/InputFile";
+import { Input } from "../../components/Form/Input";
+import { InputFile } from "../../components/Form/InputFile";
 import { useForm } from 'react-hook-form';
-import { categories } from '../../../../public/items.json'
-import { Button } from "@/app/components/Form/Button";
+import { categories } from '../../../public/items.json'
+import { Button } from "../../components/Form/Button";
 import { toast } from 'react-toastify';
 import FormData from 'form-data';
-import { api } from '@/app/utils/api';
+import { api } from '../../utils/api';
 
 export default function CreateArticles() {
     interface IFormProps {

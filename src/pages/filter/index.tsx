@@ -1,9 +1,9 @@
 'use client';
-import RecipesContainer from "@/app/components/RecipesContainer";
-import { fetchWrapper } from "@/app/utils/fetchWrapper";
+import RecipesContainer from "../../components/RecipesContainer";
+import { fetchWrapper } from "../../utils/fetchWrapper";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { categories } from '../../../../public/items.json';
+import { categories } from '../../../public/items.json';
 
 export default function FilterPage({ params }: { params: { category: string } }) {
     const searchParams = useSearchParams();
