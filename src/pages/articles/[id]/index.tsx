@@ -1,21 +1,23 @@
 'use client';
+import { useSearchParams } from "next/navigation";
 import { fetchWrapper } from "../../../utils/fetchWrapper";
 import { useEffect, useState } from "react";
+import { api } from "@/utils/api";
 
 export default function ArticleDetailsPage({ params }: { params: { id: string } }) {
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
+
     const [article, setArticle] = useState({
         title: '',
         image: '',
         description: '',
         text: [],
-
     })
     useEffect(() => {
         const detailArticle = async () => {
-            const response = await fetchWrapper(`/articles/id/${params.id}`, {
-                method: 'GET',
-            });
-            setArticle(response)
+            const response = await api.get(`/articles/id?id=${id}`);
+            setArticle(response.data)
         }
         detailArticle()
     }, [])
@@ -32,8 +34,8 @@ export default function ArticleDetailsPage({ params }: { params: { id: string } 
             <h3 className="mb-12 text-xl">{article.description}</h3>
             {article.text.map((text: string[], index: number) => {
                 return (
-                    <div className=" flex items-center text-xl gap-4">
-                        <p className="font-bold text-5xl text-backing-color-3">{index + 1}</p>
+                    <div className=" flex items-center text-xl gap-4 px-5">
+                        <p className="font-bold text-5xl text-backing-color-3 mb-12">{index + 1}</p>
                         <p className="mb-2">{text}</p>
                     </div>
 

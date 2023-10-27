@@ -2,8 +2,14 @@
 import { fetchWrapper } from "../../../utils/fetchWrapper";
 import { PiTimer, PiCookingPotLight } from 'react-icons/pi'
 import { AiOutlineUser } from 'react-icons/ai';
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { useSearchParams } from "next/navigation";
+import { api } from "@/utils/api";
+
 export default function RecipesDetailsPage({ params }: { params: { id: string } }) {
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
+
     const [recipeId, setRecipeId] = useState({
         title: '',
         image: '',
@@ -16,15 +22,14 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
     })
     useEffect(() => {
         async function detailRecipe() {
-            const response = await fetchWrapper(`/recipes/id/${params.id}`, {
-                method: 'GET',
-            });
-            setRecipeId(response)
+            const response = await api.get(`/recipes/id?id=${id}`);
+            setRecipeId(response.data)
         }
         detailRecipe()
     }, [])
     const image = `https://nenas-kitchen-api.onrender.com/uploads/${recipeId.image}`
     return (
+
         <div className='m-auto w-full flex flex-col  h-full px-8 pb-8 gap-10'>
             <p className="text-xl font-bold text-scale-gray-7  mt-8 mb-8">{`Nena's Kitchen > Receitas > ${recipeId.category} > ${recipeId.title}`}</p>
             <div className=" flex w-full h-96 gap-10">
