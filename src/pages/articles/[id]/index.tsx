@@ -1,6 +1,5 @@
 'use client';
 import { useSearchParams } from "next/navigation";
-import { fetchWrapper } from "../../../utils/fetchWrapper";
 import { useEffect, useState } from "react";
 import { api } from "@/utils/api";
 
@@ -22,14 +21,13 @@ export default function ArticleDetailsPage({ params }: { params: { id: string } 
         detailArticle()
     }, [])
 
-    const image = `https://nenas-kitchen-api.onrender.com/uploads/${article.image}`
     return (
         <div className="m-auto w-full h-full px-8 pb-8 ">
             <p className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Kitchen > Artigos > ${article.title}`}</p>
             <h1 className="text-4xl font-bold text-scale-gray-7 mb-12 mt-12">{article.title}</h1>
             <div
                 className="rounded w-full h-96 relative bg-black shadow bg-cover bg-no-repeat bg-center mb-12"
-                style={{ backgroundImage: `url(${image})` }}
+                style={{ backgroundImage: `url(${article.image})` }}
             />
             <h3 className="mb-12 text-xl">{article.description}</h3>
             {article.text.map((text: string[], index: number) => {

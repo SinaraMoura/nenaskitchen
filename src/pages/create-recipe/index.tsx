@@ -65,7 +65,7 @@ export default function CreateRecipes() {
     };
 
     return (
-        <div className="container m-auto sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
+        <div className="container m-auto mb-12 sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-1 grid-cols-1 p-8">
                     <div className="mb-4 pr-6 border-r-2 border-color-secundary-1 sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">

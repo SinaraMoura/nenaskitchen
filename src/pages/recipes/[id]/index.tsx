@@ -1,5 +1,4 @@
 'use client';
-import { fetchWrapper } from "../../../utils/fetchWrapper";
 import { PiTimer, PiCookingPotLight } from 'react-icons/pi'
 import { AiOutlineUser } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
@@ -27,15 +26,14 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
         }
         detailRecipe()
     }, [])
-    const image = `https://nenas-kitchen-api.onrender.com/uploads/${recipeId.image}`
     return (
 
-        <div className='m-auto w-full flex flex-col  h-full px-8 pb-8 gap-10'>
+        <div className='m-auto w-full flex flex-col  h-full px-8 pb-8 gap-10 mb-12'>
             <p className="text-xl font-bold text-scale-gray-7  mt-8 mb-8">{`Nena's Kitchen > Receitas > ${recipeId.category} > ${recipeId.title}`}</p>
             <div className=" flex w-full h-96 gap-10">
                 <div
                     className="rounded w-2/4 h-96 relative bg-black shadow bg-cover bg-center mb-4"
-                    style={{ backgroundImage: `url(${image})` }}
+                    style={{ backgroundImage: `url(${recipeId.image})` }}
                 />
                 <div className="w-2/4 flex flex-col items-center  border border-scale-gray-2 px-8 py-8 rounded bg-scale-gray-2">
                     <h1 className="text-4xl text-backing-color-2 font-bold mb-12">{recipeId.title}</h1>

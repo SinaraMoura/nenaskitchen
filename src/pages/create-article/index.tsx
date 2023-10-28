@@ -2,7 +2,6 @@
 import { Input } from "../../components/Form/Input";
 import { InputFile } from "../../components/Form/InputFile";
 import { useForm } from 'react-hook-form';
-import { categories } from '../../../public/items.json'
 import { Button } from "../../components/Form/Button";
 import { toast } from 'react-toastify';
 import FormData from 'form-data';
@@ -52,7 +51,7 @@ export default function CreateArticles() {
         setValue(name, file);
     };
     return (
-        <div className="container m-auto sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
+        <div className="container m-auto mb-12 sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid md:grid-cols-2 gap-1 grid-cols-1 p-8">
                     <div className="mb-4 pr-6 border-r-2 border-color-secundary-1 ">
