@@ -1,7 +1,7 @@
 'use client';
+import { api } from "@/utils/api";
 import ElasticCarousel from "../../components/Carousel";
 import RecipesContainer from "../../components/RecipesContainer";
-import { fetchWrapper } from "../../utils/fetchWrapper";
 import Link from "next/link";
 import { useEffect, useState } from 'react';
 
@@ -10,10 +10,8 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function listRecipes() {
-            const response = await fetchWrapper('/recipes/list', {
-                method: 'GET',
-            });
-            setRecipes(response)
+            const response = await api.get('/recipes/list');
+            setRecipes(response.data)
         }
         listRecipes()
     }, [])

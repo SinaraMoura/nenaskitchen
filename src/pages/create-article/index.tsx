@@ -22,7 +22,6 @@ export default function CreateArticles() {
     } = useForm<IFormProps>();
 
     const onSubmit = async (data: IFormProps) => {
-        console.log("🚀 ~ file: page.tsx:24 ~ onSubmit ~ data:", data)
         try {
             const formattedDate = new Date();
             const formData = new FormData();

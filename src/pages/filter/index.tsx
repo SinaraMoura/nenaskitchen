@@ -1,9 +1,9 @@
 'use client';
 import RecipesContainer from "../../components/RecipesContainer";
-import { fetchWrapper } from "../../utils/fetchWrapper";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { categories } from '../../../public/items.json';
+import { api } from "@/utils/api";
 
 export default function FilterPage({ params }: { params: { category: string } }) {
     const searchParams = useSearchParams();
@@ -14,14 +14,12 @@ export default function FilterPage({ params }: { params: { category: string } })
 
     useEffect(() => {
         async function filterRecipe() {
-            const response = await fetchWrapper(`/recipes/category/${category}`, {
-                method: 'GET',
-            });
+            const response = await api.get(`/recipes/category/${category}`);
 
-            if (response.length === 0) {
+            if (response.data.length === 0) {
                 return setFilterNull(`Nenhuma receita encontrada com a categoria '${category}'`);
             }
-            setRecipes(response);
+            setRecipes(response.data);
         }
         filterRecipe()
     }, [category])
@@ -29,21 +27,19 @@ export default function FilterPage({ params }: { params: { category: string } })
     const optionSelect = (option: any) => {
         router.push(`/filter?category=${option.target.value}`)
         async function filterRecipe() {
-            const response = await fetchWrapper(`/recipes/category/${option.target.value}`, {
-                method: 'GET',
-            });
-            if (response.length === 0) {
+            const response = await api.get(`/recipes/category/${option.target.value}`);
+            if (response.data.length === 0) {
                 setRecipes([]);
                 return setFilterNull(`Nenhuma receita encontrada com a categoria '${option.target.value}'`);
             } else {
                 setFilterNull('')
             }
-            setRecipes(response)
+            setRecipes(response.data)
         }
         filterRecipe()
     }
     return (
-        <div className="w-full h-full m-auto container px-5">
+        <div className="w-full mb-12 h-full m-auto container px-5">
             <h1 className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Ticken > Filtros > ${category}`}</h1>
 
             <select className="mb-8 border px-4 py-2" onChange={(e) => optionSelect(e)}>
