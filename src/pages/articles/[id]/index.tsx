@@ -22,7 +22,7 @@ export default function ArticleDetailsPage({ params }: { params: { id: string } 
     }, [])
 
     return (
-        <div className="m-auto w-full h-full px-8 pb-8 ">
+        <div className="m-auto w-full h-full px-8 pb-8 mb-12">
             <p className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Kitchen > Artigos > ${article.title}`}</p>
             <h1 className="text-4xl font-bold text-scale-gray-7 mb-12 mt-12">{article.title}</h1>
             <div
