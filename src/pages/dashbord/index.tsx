@@ -10,11 +10,15 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function listRecipes() {
-            const response = await api.get('/recipes/list');
-            setRecipes(response.data)
+            try {
+                const response = await api.get('/recipes/list');
+                setRecipes(response.data)
+            } catch (error) {
+                console.log(error);
+            }
         }
         listRecipes()
-    }, [])
+    }, [recipes])
     return (
         <div className=" flex flex-col justify-center w-full  bg-scale-gray-1 mb-12 ">
             <div className="mb-8 ">
@@ -40,4 +44,5 @@ export default function Dashboard() {
         </div>
     )
 }
+
 

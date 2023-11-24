@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import ArticlesContainer from "../../components/ArticlesContainer"
-import { fetchWrapper } from "../../utils/fetchWrapper";
+import { api } from "@/utils/api";
 
 export default function Articles({ articles }: any) {
 
@@ -10,7 +10,7 @@ export default function Articles({ articles }: any) {
             <div className="w-full grid grid-cols-1  lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4 pb-8">
                 {articles.map((article: any) => {
                     return (
-                        <ArticlesContainer articles={article} />
+                        <ArticlesContainer key={article._id} articles={article} />
                     )
                 })}
             </div>
@@ -21,9 +21,8 @@ export default function Articles({ articles }: any) {
 export const getServerSideProps: GetServerSideProps = async () => {
     let articles = [];
     try {
-        articles = await fetchWrapper('/articles/list', {
-            method: 'GET',
-        });
+        const response = await api.get('/articles/list');
+        articles = response.data;
     } catch (error) {
         articles = [];
     }

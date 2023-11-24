@@ -1,5 +1,4 @@
 import axios from 'axios';
-import FormData from 'form-data';
 
 const api = axios.create({
     baseURL: 'https://nenas-kitchen-api.onrender.com',
@@ -8,10 +7,4 @@ const api = axios.create({
     headers: { 'content-type': 'application/x-www-form-urlencoded' }
 })
 
-// api.interceptors.request.use(config => {
-//     if (config.data instanceof FormData) {
-//         Object.assign(config.headers, config.data.getHeaders());
-//     }
-//     return config;
-// });
 export { api }
