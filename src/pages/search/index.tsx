@@ -14,7 +14,10 @@ export default function Search({ params }: { params: { title: string } }) {
         async function searchRecipe() {
             const response = await api.get(`/recipes/title?name=${title}`);
             if (response.data.length === 0) {
+                setSearchRecipe([]);
                 return setSearchRecipeNull(`Nenhuma receita relacionada a '${title}'`);
+            } else {
+                setSearchRecipeNull('')
             }
             setSearchRecipe(response.data)
         }
@@ -25,7 +28,7 @@ export default function Search({ params }: { params: { title: string } }) {
         <div className="w-full m-auto mb-12 container px-5">
             <h1 className="text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Receitas relacionadas a '${title}'`}</h1>
 
-            <div className="w-full container grid grid-cols-1 gap-4 items-center justifiy-center pb-8 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+            <div className="w-full container grid grid-cols-1 gap-4 items-center justifiy-center pb-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2">
                 {searchRecipe.map((recipe: any, index: number) => {
                     return <RecipesContainer recipes={recipe} key={index} />
                 })}

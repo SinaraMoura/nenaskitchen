@@ -54,7 +54,7 @@ export default function FilterPage({ params }: { params: { category: string } })
 
             <p className="text-base font-medium">{filterNull}</p>
 
-            <div className="grid grid-cols-1 gap-4 items-center justifiy-center pb-8 h-full lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+            <div className="w-full container grid grid-cols-1 gap-4 items-center justifiy-center pb-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2">
 
                 {recipes.map((recipe: any) => {
                     return (

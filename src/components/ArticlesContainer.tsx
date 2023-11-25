@@ -8,7 +8,7 @@ export default function ArticlesContainer({ articles }: any) {
                 <div className="rounded w-72 h-96 relative bg-black bg-opacity-25  shadow bg-cover bg-center"
                     style={{ backgroundImage: `url(${articles.image})` }}
                 />
-                <h3 className="text-normal pb-1 font-semibold">{articles.title}</h3>
+                <h3 className="text-normal pb-1 font-semibold text-center max-w-xl mx-auto  md:text-center lg:text-center xl:text-center">{articles.title}</h3>
             </div>
         </Link>
     )
