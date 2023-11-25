@@ -21,6 +21,7 @@ export function NavBar() {
                     alt="Logo"
                     width={200}
                     height={200}
+                    priority={true}
                 />
             </div>
 

@@ -1,4 +1,4 @@
-import { categories } from "../../public/items.json";
+import listCategories from "../../public/items.json";
 import Carousel from "react-elastic-carousel";
 import styles from "../styles/Elastic.module.css";
 import { useRouter } from "next/navigation";
@@ -11,7 +11,7 @@ const breakPoints = [
 ];
 
 export default function ElasticCarousel() {
-  const { elastic } = categories;
+  const categories = listCategories.categories;
   const router = useRouter();
 
   const filterCategory = (category) => {
@@ -21,7 +21,7 @@ export default function ElasticCarousel() {
     <div className={styles.container}>
       <div className={styles.contWrapper}>
         <Carousel breakPoints={breakPoints}>
-          {elastic.map((item) => (
+          {categories.elastic.map((item) => (
             <div
               onClick={() => filterCategory(item.name)}
               key={item.id}

@@ -2,13 +2,14 @@
 import { Input } from "../../components/Form/Input";
 import { InputFile } from "../../components/Form/InputFile";
 import { useForm } from 'react-hook-form';
-import { categories } from '../../../public/items.json'
+import listCategories from '../../../public/items.json'
 import { Button } from "../../components/Form/Button";
 import { toast } from 'react-toastify';
 import FormData from 'form-data';
 import { api } from '../../utils/api';
 
 export default function CreateRecipes() {
+    const categories = listCategories.categories
     interface IFormProps {
         time: string;
         title: string;
