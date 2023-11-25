@@ -4,6 +4,7 @@ import ElasticCarousel from "../../components/Carousel";
 import RecipesContainer from "../../components/RecipesContainer";
 import Link from "next/link";
 import { useEffect, useState } from 'react';
+import { toast } from "react-toastify";
 
 export default function Dashboard() {
     const [recipes, setRecipes] = useState([]);
@@ -11,14 +12,19 @@ export default function Dashboard() {
     useEffect(() => {
         async function listRecipes() {
             try {
-                const response = await api.get('/recipes/list');
-                setRecipes(response.data)
-            } catch (error) {
-                console.log(error);
+                api.interceptors.request.use((req) => {
+                    req.timeout = 30000;
+                    return req;
+                });
+                const response = await api.get('/recipes/list'); 7
+                setRecipes(response.data);
+
+            } catch (error: any) {
+                toast.error(error?.response?.data?.message);
             }
         }
         listRecipes()
-    }, [recipes])
+    }, [])
     return (
         <div className=" flex flex-col justify-center w-full  bg-scale-gray-1 mb-12 ">
             <div className="mb-8 ">
