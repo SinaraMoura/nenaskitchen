@@ -28,18 +28,18 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
     }, [])
     return (
 
-        <div className='m-auto w-full flex flex-col  h-full px-8 pb-8 gap-10 mb-12'>
-            <p className="text-xl font-bold text-scale-gray-7  mt-8 mb-8">{`Nena's Kitchen > Receitas > ${recipeId.category} > ${recipeId.title}`}</p>
-            <div className=" flex w-full h-96 gap-10">
+        <div className='m-auto w-full flex flex-col gap-6 md:gap-10 px-4 sm:px-8 pb-8 mb-12'>
+            <p className="text-lg md:text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Kitchen > Receitas > ${recipeId.category} > ${recipeId.title}`}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                 <div
-                    className="rounded w-2/4 h-96 relative bg-black shadow bg-cover bg-center mb-4"
+                    className="rounded h-80 md:h-96 relative bg-black shadow bg-cover bg-center mb-4 md:mb-0"
                     style={{ backgroundImage: `url(${recipeId.image})` }}
                 />
-                <div className="w-2/4 flex flex-col items-center  border border-scale-gray-2 px-8 py-8 rounded bg-scale-gray-2">
-                    <h1 className="text-4xl text-backing-color-2 font-bold mb-12">{recipeId.title}</h1>
-                    <div className="w-full border border-backing-color-4 mb-12 "></div>
+                <div className="flex flex-col items-center border border-scale-gray-2 px-4 sm:px-6 md:px-8 py-4 sm:py-6 md:py-8 rounded bg-scale-gray-2">
+                    <h1 className="text-xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 lg:mb-10">{recipeId.title}</h1>
+                    <div className="w-full border border-backing-color-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10"></div>
 
-                    <div className="flex items-center justify-center gap-28 font-bold text-backing-color-2">
+                    <div className="flex flex-col font-bold md:flex-row items-center justify-between text-backing-color-2 lg:justify-center gap-4 sm:gap-6 md:gap-28">
                         <div className="flex flex-col items-center justify-center">
                             <AiOutlineUser />
                             <p>{recipeId.proceeds}</p>
@@ -55,24 +55,24 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
                     </div>
                 </div>
             </div>
-            <div className="w-full flex gap-10 text-scale-gray-7">
-                <div className="w-2/4 ">
-                    <h3 className="text-2xl  font-medium mb-4">Ingredientes</h3>
-                    {recipeId.ingredients.map((ing: string[]) => {
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 text-scale-gray-7 mt-6 sm:mt-8">
+                <div className="w-full sm:w-full">
+                    <h3 className="text-xl md:text-xl font-medium mb-2 sm:mb-4 md:mb-6">Ingredientes</h3>
+                    {recipeId.ingredients.map((ing: string[], index: number) => {
                         return (
-                            <ul className="list-disc px-8 text-xl">
+                            <ul key={index} className="list-disc pl-8 md:pl-8 text-lg md:text-lg ">
                                 <li>{ing}</li>
                             </ul>
                         )
                     })}
                 </div>
-                <div className="w-2/4 h-full text-scale-gray-7">
-                    <h3 className="text-2xl font-medium text-scale-gray-7 mb-4">Modo de Preparo</h3>
+                <div className="w-full sm:w-2/4 mt-8 sm:mt-0 md:w-full text-scale-gray-7">
+                    <h3 className="text-xl md:text-xl font-medium mb-2 sm:mb-4 md:mb-6">Modo de Preparo</h3>
                     {recipeId.preparation.map((prep: string[], index: number) => {
                         return (
-                            <div className="rounded cursor-pointer flex items-center text-xl gap-4 px-5 py-5 hover:bg-scale-gray-2">
-                                <p className="font-bold text-5xl text-backing-color-3">{index + 1}</p>
-                                <p className="mb-2">{prep}</p>
+                            <div key={index} className="rounded cursor-pointer flex items-center text-lg md:text-lg gap-4 md:gap-4 px-5 md:px-5 py-5 md:py-5 hover:bg-scale-gray-2">
+                                <p className="font-bold text-base md:text-5xl text-backing-color-3">{index + 1}</p>
+                                <p className="mb-1 md:mb-2">{prep}</p>
                             </div>
                         )
                     })}

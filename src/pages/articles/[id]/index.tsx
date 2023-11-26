@@ -32,9 +32,9 @@ export default function ArticleDetailsPage({ params }: { params: { id: string } 
             <h3 className="mb-12 text-xl">{article.description}</h3>
             {article.text.map((text: string[], index: number) => {
                 return (
-                    <div className=" flex items-center text-xl gap-4 px-5">
-                        <p className="font-bold text-5xl text-backing-color-3 mb-12">{index + 1}</p>
-                        <p className="mb-2">{text}</p>
+                    <div className="flex items-center text-lg md:text-lg gap-4 md:gap-4 px-5 md:px-5 py-5 md:py-5 ">
+                        <p className="font-bold text-2xl sm:text-5xl text-backing-color-3 mb-3">{index + 1}</p>
+                        <p className="mb-1 sm:mb-2">{text}</p>
                     </div>
 
                 )
