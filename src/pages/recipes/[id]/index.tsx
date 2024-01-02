@@ -1,13 +1,18 @@
 'use client';
 import { PiTimer, PiCookingPotLight } from 'react-icons/pi'
 import { AiOutlineUser } from 'react-icons/ai';
+import { GoTrash } from "react-icons/go";
+import { TfiPencilAlt } from "react-icons/tfi";
 import { useEffect, useState } from 'react';
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { toast } from 'react-toastify';
 import { api } from "@/utils/api";
+import Link from 'next/link';
 
 export default function RecipesDetailsPage({ params }: { params: { id: string } }) {
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
+    const router = useRouter();
 
     const [recipeId, setRecipeId] = useState({
         title: '',
@@ -19,6 +24,17 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
         ingredients: [],
         preparation: []
     })
+
+    const deleteRecipes = async ()=>{
+        try {
+            const response = await api.delete(`/recipes/delete/${id}`);
+            toast.success('Receita excluída com sucesso!');
+            router.push("/recipes");
+        } catch (error:any) {
+             toast.error(error?.response?.data?.message);
+        }
+    }
+
     useEffect(() => {
         async function detailRecipe() {
             const response = await api.get(`/recipes/id?id=${id}`);
@@ -29,7 +45,17 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
     return (
 
         <div className='m-auto w-full flex flex-col gap-6 md:gap-10 px-4 sm:px-8 pb-8 mb-12'>
-            <p className="text-lg md:text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Kitchen > Receitas > ${recipeId.category} > ${recipeId.title}`}</p>
+            <div className='flex justify-content items-center justify-between'>
+                <p className="text-lg md:text-xl font-bold text-scale-gray-7 mt-8 mb-8">{`Nena's Kitchen > Receitas > ${recipeId.category} > ${recipeId.title}`}</p>
+            
+                <div className='flex gap-2.5 pointer'>
+                    <GoTrash  onClick={()=>deleteRecipes()}/>
+                    <Link href={`/edit-recipes/${id}`}>
+                        <TfiPencilAlt />
+                    </Link>
+                </div>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10">
                 <div
                     className="rounded h-80 md:h-96 relative bg-black shadow bg-cover bg-center mb-4 md:mb-0"
