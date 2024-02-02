@@ -1,29 +1,30 @@
+'use client'
 import { Input } from "@/components/Form/Input";
 import { api } from "@/utils/api";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import listCategories from '../../../../public/items.json'
+import listCategories from '../../../../public/items.json';
 import { InputFile } from "@/components/Form/InputFile";
 import { Button } from "@/components/Form/Button";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-
-export default function EditRecipes({ params }: { params: { id: string } }){
-    const categories = listCategories.categories
-    const searchParams = useSearchParams();
+export default function EditRecipes({ params }: { params: { id: string } }) {
+    const categories = listCategories.categories;
     const router = useRouter();
+    const searchParams = useSearchParams();
     const id = searchParams.get('id');
 
-    const [recipes,setRecipes] = useState({
+    const [recipe, setRecipe] = useState({
         title: '',
-        duration:'',
-        difficulty:'',
-        category:'',
-        proceeds:'',
-        image:'',
-        ingredients:'',
-        preparation:''
+        duration: '',
+        difficulty: '',
+        category: '',
+        proceeds: '',
+        image: '',
+        ingredients: [],
+        preparation: []
     });
 
     interface IFormProps {
@@ -43,63 +44,78 @@ export default function EditRecipes({ params }: { params: { id: string } }){
         handleSubmit,
         setValue
     } = useForm<IFormProps>();
-    
-    useEffect(()=>{
-       async function recipes (){
-        try {
-            const recipe = await api.get(`/recipes/id?id=${id}`);
-            console.log(recipe.data);
-            setRecipes(recipe.data)
-        } catch (error) {
-            console.log(error);
-            
 
-        }
-       }
-       recipes()
-    },[])
-            
-   
+    useEffect(() => {
+        async function fetchRecipe() {
+            try {
+                const response = await api.get(`/recipes/id?id=${id}`);
+                const fetchedRecipe = response.data;
+               
+                
+                setRecipe(fetchedRecipe);
 
-    
-
-    const onSubmit = async () => {
-        try {
-            
-
-            const formateddPreparation = recipes.preparation.split('\n');
-            const formateddIngredients= recipes.ingredients.split('\n');
-
-            const data = {
-                title: recipes.title,
-                duration:recipes.duration,
-                difficulty:recipes.difficulty,
-                category:recipes.category,
-                proceeds:recipes.proceeds,
-                image:recipes.image,
-                ingredients: formateddIngredients,
-                preparation:formateddPreparation
+                // Use setValue for each field
+                Object.keys(fetchedRecipe).forEach((field) => {
+                    setValue(field as any, fetchedRecipe[field]);
+                });
+                setValue('category', fetchedRecipe.category);
+                console.log(recipe.category);
+                
+            } catch (error) {
+                console.log(error);
             }
-       
+        }
 
-            const response = await api.put(`/recipes/update/${id}`, data);
-        
+        if (!recipe) {
+            fetchRecipe();
+        }
+        fetchRecipe();
+    }, [id]);
+
+    const onSubmit = async (data: IFormProps) => {
+        try {
+            const formattedDate = new Date();
+            const formData = new FormData();
+
+            const formattedIngredients = data.ingredients.split('\n')
+            const formattedPreparation = data.preparation.split('\n')
+
+            formData.append('title', data.title);
+            formData.append('duration', data.duration);
+            formData.append('date', formattedDate.toISOString());
+            formData.append('difficulty', data.difficulty);
+            formData.append('category', data.category);
+            formData.append('image', data.image);
+            formData.append('proceeds', data.proceeds);
+
+            formattedIngredients.forEach((ing, index) => {
+                formData.append(`ingredients[${index}]`, ing);
+            })
+            formattedPreparation.forEach((prep, index) => {
+                formData.append(`preparation[${index}]`, prep);
+            })
+
+            const response = await api.put(`/recipes/update/${id}`, formData);
+            console.log(formData);
+            console.log(response.config.data);
+            setRecipe(response.data)
+            
             
 
             toast.success('Receita atualizada com sucesso!');
-            router.push(`/recipes/list`)
+            router.push(`/recipes`);
         } catch (error: any) {
             toast.error(error?.response?.data?.message);
         }
+    };
 
-    }
-
-    const handleFileChange = (name: any, file: any) => {
+    const handleFileChange = (name: any ,file: any) => {
         setValue(name, file);
     };
+
     return(
        <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} >
             <div className="grid md:grid-cols-2 gap-1 grid-cols-1 p-8">
                 <div className="mb-4 pr-6 border-r-0  border-color-secundary-1 sm:border-r-0 md:border-r-2 lg:border-r-2 sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
                <Input
@@ -107,30 +123,29 @@ export default function EditRecipes({ params }: { params: { id: string } }){
                     placeholder="Insira o nome da sua receita"
                     type="text"
                     {...register('title')}
-                    value={recipes.title}
                 /> 
 
 
                 <Input
-                value={recipes.duration}
+               
                     title="Duração"
                     placeholder="Tempo de duração"
                     type="text"
-                    {...register('duration')}       
+                    {...register('duration')}      
                 />
                 <Input
                     title="Rendimento"
                     placeholder="Rende para ..."
                     type="text"
                     {...register('proceeds')}
-                    value={recipes.proceeds}       
+                        
                 />
                 <Input
                     title="Dificuldade"
                     placeholder="Nível de dificuldade"
                     type="text"
                     {...register('difficulty')} 
-                    value={recipes.difficulty}         
+                          
                 />
 
                 <label className="mb-4 text-scale-gray-7 text-scale-gray-6 font-medium">Ingredientes</label>
@@ -139,7 +154,7 @@ export default function EditRecipes({ params }: { params: { id: string } }){
                     title="Ingredientes"
                     placeholder="Obs.: Separar os ingredientes com vírgula e quebrar a linha"
                     {...register('ingredients')}   
-                    value={recipes.ingredients}        
+                          
                 />       
 
                 <label className="mb-4 text-scale-gray-6 font-medium">Modo de Preparo</label>
@@ -148,22 +163,27 @@ export default function EditRecipes({ params }: { params: { id: string } }){
                     title="Mode de Preparo"
                     placeholder="Obs.: Separar as etapas com vírgula e quebrar a linha"
                     {...register('preparation')} 
-                    value={recipes.preparation}       
+                         
                 />
 
                 <p className=" text-scale-gray-6 text-base font-medium mb-4">
                     Selecione a categoria
                 </p>
                 <div className="grid grid-cols-2 gap-2s sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 sm:items-stretch md:items-center lg:item-center xl:items-center 2xl:item-center">
-                    {categories.elastic.map((categories) => (
-                        <div className="text-scale-gray-6" key={categories.id}>
+                    {categories.elastic.map((category) => (
+                        <div className="text-scale-gray-6" key={category.id}>
                             <input
                                  type="checkbox"
                                  className="mr-2 "
-                                 {...register('category')}
-                                 value={categories.name}          
-                            />
-                            <label htmlFor="">{categories.name}</label>
+                                 {...register('category')} 
+                                 value={category.name}
+                                    checked={recipe.category === category.name}
+                                    onChange={() => {
+                                    setValue('category', category.name);
+                                    }}
+      />       
+                          
+                            <label htmlFor="">{category.name}</label>
                         </div>
                     ))}           
                 </div>

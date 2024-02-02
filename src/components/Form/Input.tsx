@@ -5,7 +5,6 @@ interface IInput {
     title: string;
     className?: string;
     value?: string;
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 export const InputBase: ForwardRefRenderFunction<
     HTMLInputElement & HTMLTextAreaElement,
