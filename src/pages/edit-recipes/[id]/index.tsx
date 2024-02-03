@@ -59,10 +59,10 @@ export default function EditRecipes({ params }: { params: { id: string } }) {
                     setValue(field as any, fetchedRecipe[field]);
                 });
                 setValue('category', fetchedRecipe.category);
-                console.log(recipe.category);
+              
                 
-            } catch (error) {
-                console.log(error);
+            } catch (error: any) {
+                toast.error(error?.response?.data?.message);
             }
         }
 
@@ -96,12 +96,8 @@ export default function EditRecipes({ params }: { params: { id: string } }) {
             })
 
             const response = await api.put(`/recipes/update/${id}`, formData);
-            console.log(formData);
-            console.log(response.config.data);
+           
             setRecipe(response.data)
-            
-            
-
             toast.success('Receita atualizada com sucesso!');
             router.push(`/recipes`);
         } catch (error: any) {

@@ -1,13 +1,25 @@
-'use client';
-import { Input } from "../../components/Form/Input";
-import { InputFile } from "../../components/Form/InputFile";
-import { useForm } from 'react-hook-form';
-import { Button } from "../../components/Form/Button";
-import { toast } from 'react-toastify';
-import FormData from 'form-data';
-import { api } from '../../utils/api';
+'use client'
+import { Input } from "@/components/Form/Input";
+import { api } from "@/utils/api";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { InputFile } from "@/components/Form/InputFile";
+import { Button } from "@/components/Form/Button";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function CreateArticles() {
+export default function EditArticle({ params }: { params: { id: string } }) {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const id = searchParams.get('id');
+
+    const [article, setArticle] = useState({
+        title: '',
+        description: '',
+        text: '',
+    });
+
     interface IFormProps {
         title: string;
         description: string;
@@ -20,6 +32,31 @@ export default function CreateArticles() {
         handleSubmit,
         setValue
     } = useForm<IFormProps>();
+
+    useEffect(() => {
+        async function fetchArticle() {
+            try {
+                const response = await api.get(`/articles/id?id=${id}`);
+                const fetchedArticle = response.data;
+               
+                
+                setArticle(fetchedArticle);
+
+                // Use setValue for each field
+                Object.keys(fetchedArticle).forEach((field) => {
+                    setValue(field as any, fetchedArticle[field]);
+                });
+                
+            } catch (error: any) {
+                toast.error(error?.response?.data?.message);
+            }
+        }
+
+        if (!article) {
+            fetchArticle();
+        }
+        fetchArticle();
+    }, [id]);
 
     const onSubmit = async (data: IFormProps) => {
         try {
@@ -39,8 +76,9 @@ export default function CreateArticles() {
             })
 
 
-            await api.post(`/articles`, formData);
-            toast.success('Artigo adicionado com sucesso!');
+            await api.put(`/articles/update/${id}`, formData);
+            toast.success('Artigo atualizado com sucesso!');
+            router.push(`/articles`);
         } catch (error: any) {
             toast.error(error?.response?.data?.message);
         }
@@ -102,7 +140,7 @@ export default function CreateArticles() {
                                     />
                                 </div>
                             </div>
-                            <Button title="Cadastrar artigo" />
+                            <Button title="Atualizar artigo" />
                         </div>
                     </div>
                 </div>
