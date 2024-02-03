@@ -65,16 +65,16 @@ export default function RecipesDetailsPage({ params }: { params: { id: string } 
                     <h1 className="text-xl md:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 lg:mb-10">{recipeId.title}</h1>
                     <div className="w-full border border-backing-color-4 mb-4 sm:mb-6 md:mb-8 lg:mb-10"></div>
 
-                    <div className="flex flex-col font-bold md:flex-row items-center justify-between text-backing-color-2 lg:justify-center gap-4 sm:gap-6 md:gap-28">
-                        <div className="flex flex-col items-center justify-center">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 w-full flex flex-col font-bold md:flex-row items-center justify-between text-backing-color-2 lg:justify-center gap-4 sm:gap-6 md:gap-28">
+                        <div className="flex flex-col items-center justify-center mb-2 md:mb-0 md:items-center md:text-center">
                             <AiOutlineUser />
                             <p>{recipeId.proceeds}</p>
                         </div>
-                        <div className="flex flex-col items-center justify-center">
+                        <div className="flex flex-col items-center justify-center mb-2 md:mb-0 md:items-center md:text-center">
                             <PiTimer />
                             <p>{recipeId.duration}</p>
                         </div>
-                        <div className="flex flex-col items-center justify-center">
+                        <div className="flex flex-col items-center justify-center mb-2 md:mb-0 md:items-center md:text-center">
                             <PiCookingPotLight />
                             <p>{recipeId.difficulty}</p>
                         </div>
