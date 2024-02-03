@@ -23,7 +23,7 @@ export default function EditArticle({ params }: { params: { id: string } }) {
     interface IFormProps {
         title: string;
         description: string;
-        text: string;
+        text: string | string[];
         date: string;
         image: File;
     }
@@ -62,8 +62,13 @@ export default function EditArticle({ params }: { params: { id: string } }) {
         try {
             const formattedDate = new Date();
             const formData = new FormData();
+            let formattedText
 
-            const formattedText = data.text.split('\n')
+            if(typeof data.text == "string"){
+                formattedText = data.text.split('\n')
+            } else {
+                formattedText = data.text
+            } 
 
             formData.append('title', data.title);
             formData.append('description', data.description);

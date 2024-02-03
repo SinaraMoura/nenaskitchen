@@ -33,8 +33,8 @@ export default function EditRecipes({ params }: { params: { id: string } }) {
         duration: string;
         difficulty: string;
         category: string;
-        ingredients: string;
-        preparation: string;
+        ingredients: string | string[];
+        preparation: string | string[];
         proceeds: string;
         date: string;
         image: File;
@@ -44,7 +44,7 @@ export default function EditRecipes({ params }: { params: { id: string } }) {
         handleSubmit,
         setValue
     } = useForm<IFormProps>();
-
+   
     useEffect(() => {
         async function fetchRecipe() {
             try {
@@ -73,12 +73,26 @@ export default function EditRecipes({ params }: { params: { id: string } }) {
     }, [id]);
 
     const onSubmit = async (data: IFormProps) => {
+        
         try {
             const formattedDate = new Date();
             const formData = new FormData();
+            let formattedIngredients 
+            let formattedPreparation 
 
-            const formattedIngredients = data.ingredients.split('\n')
-            const formattedPreparation = data.preparation.split('\n')
+            if(typeof data.ingredients == "string"){
+                 formattedIngredients = data.ingredients.split('\n')
+            } else {
+                formattedIngredients = data.ingredients
+            }
+
+
+            if(typeof data.preparation == "string"){
+                 formattedPreparation = data.preparation.split('\n')
+            }  else {
+                formattedPreparation = data.preparation
+            }
+            
 
             formData.append('title', data.title);
             formData.append('duration', data.duration);
@@ -102,6 +116,7 @@ export default function EditRecipes({ params }: { params: { id: string } }) {
             router.push(`/recipes`);
         } catch (error: any) {
             toast.error(error?.response?.data?.message);
+
         }
     };
 

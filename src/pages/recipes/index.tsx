@@ -3,6 +3,8 @@ import RecipesContainer from "../../components/RecipesContainer";
 import { GetServerSideProps } from "next";
 
 export default function Recipes({ recipes: categories }: any) {
+    console.log(categories);
+    
   categories.sort((a: any, b: any) => a.category.localeCompare(b.category));
 
     return (
